@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR por calendario</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <!-- Pantalla al escanear el QR -->
+    <section id="redirigiendo" hidden>
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+      <p class="grande">Abriendo...</p>
+    </section>
+    <section id="mensaje" hidden>
+      <p class="grande" id="mensajeTexto"></p>
+    </section>
+
+    <!-- Pantalla del generador (sin clave en la direccion) -->
+    <section id="generador" hidden>
+      <h1>QR por calendario</h1>
+      <label for="calId">ID del calendario</label>
+      <input id="calId" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="ejemplo@group.calendar.google.com">
+      <button id="btnGenerar" type="button">Crear QR</button>
+      <div id="qrcode"></div>
+      <p id="enlaceQR" class="enlace"></p>
+      <div class="botones">
+        <button id="btnDescargar" type="button" hidden>Descargar imagen</button>
+        <button id="btnProbar" type="button" hidden>Ver destino activo ahora</button>
+      </div>
+      <p id="resultadoPrueba" class="grande"></p>
+      <p class="pequeno">Servicio: <span id="urlWS"></span></p>
+    </section>
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
