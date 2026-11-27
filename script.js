@@ -2333,7 +2333,26 @@ var qrcode = function() {
         if (esWeb(destino)) {
           window.location.replace(destino);
         } else {
-          mensaje('Ahora mismo no hay ningun destino activo para este codigo QR.');
+          // Pantalla amable para el cliente: tarjeta centrada, sin jerga
+          // tecnica, valida tanto cuando una promocion termina como antes
+          // de la primera (la pagina no guarda historial).
+          var el = document.getElementById('mensajeTexto');
+          el.innerHTML =
+            '<span style="display:inline-block;background:#fff;border-radius:16px;' +
+            'box-shadow:0 2px 12px rgba(20,60,90,.14);padding:30px 26px;max-width:340px;' +
+            'margin-top:9vh;text-align:center">' +
+              '<svg width="52" height="52" viewBox="0 0 52 52" aria-hidden="true" ' +
+              'style="display:block;margin:0 auto 18px">' +
+                '<circle cx="26" cy="26" r="22.5" fill="none" stroke="#1769aa" stroke-width="3"/>' +
+                '<path d="M26 15v11.5l8 5" fill="none" stroke="#1769aa" stroke-width="3" ' +
+                'stroke-linecap="round" stroke-linejoin="round"/>' +
+              '</svg>' +
+              '<span style="display:block;font-size:23px;font-weight:bold;line-height:1.3;' +
+              'color:#123">No hay ninguna promoci\u00f3n activa en este momento.</span>' +
+              '<span style="display:block;font-size:17px;line-height:1.45;color:#456;' +
+              'margin-top:12px">Vuelve pronto para descubrir nuestras novedades.</span>' +
+            '</span>';
+          mostrar('mensaje');
         }
       })
       .catch(function () {
